@@ -18,7 +18,8 @@ public class Account {
 	private String name;
 	private Date birthdate;
 	private String password;
-	
+	private String email;
+
 	public Account(Long id, String name, Date birthdate) {
 		this.id = id;
 		this.name = name;
@@ -58,6 +59,12 @@ public class Account {
 		this.password = password;
 	}
 	
-	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
 }
