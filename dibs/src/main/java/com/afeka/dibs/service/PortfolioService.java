@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.afeka.dibs.dao.PortfolioDao;
@@ -29,6 +30,11 @@ public class PortfolioService implements Iservice<Portfolio>{
 	@Transactional(readOnly=true)
 	public Portfolio getById(Long id) {
 		return portfolioDao.getOne(id);
+	}
+	
+	@Transactional(readOnly=true)
+	public List<Portfolio> getPortfolioByAccount (Long accountId){
+		return portfolioDao.getPortfolioByAccount(accountId);
 	}
 	
 

@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 @Entity
 @Table(name="PORTFOLIOS")
 public class Portfolio {
@@ -18,6 +20,7 @@ public class Portfolio {
 	private Long accountId;
 	
 	@Embedded
+	@Autowired
 	private List<StockInPortfolio> stocks;
 	
 	
@@ -25,11 +28,9 @@ public class Portfolio {
 		super();
 	}
 
-	public Portfolio(Long id, Long accountId, List<StockInPortfolio> stocks) {
+	public Portfolio(Long accountId) {
 		super();
-		this.id = id;
 		this.accountId = accountId;
-		this.stocks = stocks;
 	}
 
 	public Long getId() {
@@ -55,9 +56,5 @@ public class Portfolio {
 	public void setStocks(List<StockInPortfolio> stocks) {
 		this.stocks = stocks;
 	}
-	
-	
-	
-	
-	
+
 }
