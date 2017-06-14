@@ -19,6 +19,11 @@ public class Portfolio {
 	
 	@Embedded
 	private List<StockInPortfolio> stocks;
+	
+	
+	public Portfolio() {
+		super();
+	}
 
 	public Portfolio(Long id, Long accountId, List<StockInPortfolio> stocks) {
 		super();

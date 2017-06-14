@@ -20,10 +20,17 @@ public class Account {
 	private String password;
 	private String email;
 
-	public Account(Long id, String name, Date birthdate) {
+	
+	public Account() {
+		super();
+	}
+
+	public Account(Long id, String name, Date birthdate,String password, String email) {
 		this.id = id;
 		this.name = name;
 		this.birthdate = birthdate;
+		this.password = password;
+		this.email = email;
 	}
 	
 	public Long getId() {

@@ -13,6 +13,10 @@ public class Stock {
 	private String name;
 	private Double quote ;
 	
+	public Stock() {
+		super();
+	}
+
 	public Stock(String id, String name, Double quote){
 		this.id = id;
 		this.name = name;
@@ -39,6 +43,4 @@ public class Stock {
 	public void setQuote(Double quote) {
 		this.quote = quote;
 	}
-	
-	
 }

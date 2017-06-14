@@ -25,6 +25,11 @@ public class Order {
 	private OrderStatus status;
 	private Date expierdDate;
 	
+	
+	public Order() {
+		super();
+	}
+
 	public Order(Long id, Long portfolioId, String stockId, OrderType type, String paymentMethod, Integer amount,
 			Double maxPrice, Double minPrice, OrderStatus status, Date expierdDate) {
 		super();

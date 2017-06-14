@@ -9,6 +9,11 @@ public class StockInPortfolio {
 	private Integer amount;
 	private Double purchaseRate;
 	
+	
+	public StockInPortfolio() {
+		super();
+	}
+
 	public StockInPortfolio(String stockId, Integer amount, Double purchaseRate) {
 		super();
 		this.stockId = stockId;
