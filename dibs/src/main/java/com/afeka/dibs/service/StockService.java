@@ -30,5 +30,6 @@ public class StockService implements Iservice<Stock>{
 	public Stock getById(String id) {
 		return stockDao.getOne(id);
 	}
+	
 
 }

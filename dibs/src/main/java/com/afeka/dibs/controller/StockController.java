@@ -2,6 +2,11 @@ package com.afeka.dibs.controller;
 
 import java.util.List;
 
+import stockexchange.client.StockCommandType;
+import stockexchange.client.StockExchangeClient;
+import stockexchange.client.StockExchangeClientFactory;
+import stockexchange.client.StockExchangeCommand;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -9,9 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.afeka.dibs.model.Account;
 import com.afeka.dibs.model.Stock;
-import com.afeka.dibs.service.AccountService;
 import com.afeka.dibs.service.StockService;
 
 @RestController
@@ -20,19 +23,25 @@ public class StockController {
 
 	@Autowired
 	private StockService stockService;
+	private StockExchangeClient client;
 	
 	public StockController(){
 	}
 	
 	public StockController(StockService stockService){
 		this.stockService = stockService;
+		this.client = StockExchangeClientFactory.getClient();
 	}
 	
-//	@RequestMapping(path="/updateStock",
-//			method=RequestMethod.POST)
-//	public String addNewStock (@RequestBody Stock stock){
-//		
-//	}
+	public void UpdateStocks (){
+		List<String> stocksIds= client.getStocksId();
+		Stock stockTemp;
+		for(int i=0 ; i< stocksIds.size() ;i++){
+			stockexchange.client.Stock s= client.getQuote(stocksIds.get(i));
+			stockTemp = new Stock(s.getId(),s.getName(),s.getQuote());
+			stockService.add(stockTemp);
+		}
+	}
 	
 	@RequestMapping(path="/showstock/{stockId}", method=RequestMethod.GET)
 	public Stock showStock (@PathVariable("stockId") String stockId){
