@@ -33,10 +33,11 @@ public class OrderController {
 		this.client = StockExchangeClientFactory.getClient();
 	}
 	
-	public Long PlaceOrder(@RequestBody Order order){
+	public void PlaceOrder(@RequestBody Order order){
 		StockExchangeCommand command = new StockExchangeCommand(null, order.getInvokerId(),
 				order.getStockId(), order.getMinPrice(),
 				order.getMaxPrice(), order.getAmount()); // need to add order type
+		order.setId(this.client.sendCommand(command));
 	}
 	
 	@RequestMapping(path="/showorder/{orderId}", method=RequestMethod.GET)
