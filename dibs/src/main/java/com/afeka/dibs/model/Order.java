@@ -15,6 +15,7 @@ public class Order {
 	static public enum OrderStatus {COMMITTED, PERFORMED, CANCELED}
 	
 	private Long id;
+	private String invokerId;
 	private Long portfolioId;
 	private String stockId;
 	private OrderType type;
@@ -30,10 +31,11 @@ public class Order {
 		super();
 	}
 
-	public Order(Long id, Long portfolioId, String stockId, OrderType type, String paymentMethod, Integer amount,
+	public Order(Long id, String invokerId, Long portfolioId, String stockId, OrderType type, String paymentMethod, Integer amount,
 			Double maxPrice, Double minPrice, OrderStatus status, Date expierdDate) {
 		super();
 		this.id = id;
+		this.invokerId = invokerId;
 		this.portfolioId = portfolioId;
 		this.stockId = stockId;
 		this.type = type;
@@ -52,6 +54,14 @@ public class Order {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+	
+	public String getInvokerId() {
+		return invokerId;
+	}
+
+	public void setId(String invokerId) {
+		this.invokerId = invokerId;
 	}
 
 	public Long getPortfolioId() {
