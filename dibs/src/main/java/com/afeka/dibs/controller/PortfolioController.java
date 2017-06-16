@@ -9,19 +9,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.afeka.dibs.model.Portfolio;
-import com.afeka.dibs.service.AccountService;
 import com.afeka.dibs.service.PortfolioService;
-import com.afeka.dibs.service.StockService;
 
 @RestController
 @RequestMapping(path="/portfolio")
 public class PortfolioController {
 	@Autowired
 	private PortfolioService portfolioService;
-	@Autowired
-	private AccountService accountService;
-	@Autowired
-	private StockService stockService;
 	
 	
 	public PortfolioController(){

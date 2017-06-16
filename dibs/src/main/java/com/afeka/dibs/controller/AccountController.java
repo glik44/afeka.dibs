@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.afeka.dibs.model.Account;
@@ -38,6 +39,21 @@ public class AccountController {
 	@RequestMapping(path="/showall", method=RequestMethod.GET)
 	public List<Account> showAllAccount (){
 		return accountService.getAll();
+	}
+	
+	@RequestMapping(path="/login",
+			method=RequestMethod.GET)
+	public String login (@RequestParam("accountId") Long accountId, @RequestParam("password") String password){
+		
+		Account a = accountService.getById(accountId);
+		if(a == null)
+			return "Account not exsit";
+		else{
+			if(a.getPassword().equals(password))
+				return "Login success\n Welcome" + a.getName();
+			else
+				return "wrong password, try again";
+		}
 	}
 	
 }

@@ -3,6 +3,8 @@ package com.afeka.dibs.model;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -11,31 +13,36 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name="ORDERS")
 public class Order {
-	static public enum OrderType {ASK, BID}
-	static public enum OrderStatus {COMMITTED, PERFORMED, CANCELED}
-	
+
+	@Id
 	private Long id;
-	private String invokerId;
+	
 	private Long portfolioId;
 	private String stockId;
+	
+	@Enumerated(EnumType.STRING)
 	private OrderType type;
+	
 	private String paymentMethod;
 	private Integer amount;
 	private Double maxPrice;
 	private Double minPrice;
+	
+	@Enumerated(EnumType.STRING)
 	private OrderStatus status;
+	
 	private Date expierdDate;
+	
 	
 	
 	public Order() {
 		super();
 	}
 
-	public Order(Long id, String invokerId, Long portfolioId, String stockId, OrderType type, String paymentMethod, Integer amount,
+	public Order(Long id, Long portfolioId, String stockId, OrderType type, String paymentMethod, Integer amount,
 			Double maxPrice, Double minPrice, OrderStatus status, Date expierdDate) {
 		super();
 		this.id = id;
-		this.invokerId = invokerId;
 		this.portfolioId = portfolioId;
 		this.stockId = stockId;
 		this.type = type;
@@ -47,7 +54,6 @@ public class Order {
 		this.expierdDate = expierdDate;
 	}
 	
-	@Id
 	public Long getId() {
 		return id;
 	}
@@ -56,14 +62,6 @@ public class Order {
 		this.id = id;
 	}
 	
-	public String getInvokerId() {
-		return invokerId;
-	}
-
-	public void setId(String invokerId) {
-		this.invokerId = invokerId;
-	}
-
 	public Long getPortfolioId() {
 		return portfolioId;
 	}
