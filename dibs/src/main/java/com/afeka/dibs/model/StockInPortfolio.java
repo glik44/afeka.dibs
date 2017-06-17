@@ -8,17 +8,19 @@ import javax.persistence.Embeddable;
 public class StockInPortfolio {
 	
 	private String stockId;
+	private Long StockInPortfolioId;//equal to tansactionId
 	private Integer amount;
 	private Double purchaseRate;
-	private Date timeStamp;
+	private Date timeStamp; 
 	
 	public StockInPortfolio() {
 		super();
 	}
 
-	public StockInPortfolio(String stockId, Integer amount, Double purchaseRate, Date timeStamp) {
+	public StockInPortfolio(String stockId, Long StockInPortfolioId, Integer amount, Double purchaseRate, Date timeStamp) {
 		super();
 		this.stockId = stockId;
+		this.StockInPortfolioId = StockInPortfolioId;
 		this.amount = amount;
 		this.purchaseRate = purchaseRate;
 		this.timeStamp = timeStamp;
@@ -30,6 +32,15 @@ public class StockInPortfolio {
 
 	public void setTimeStamp(Date timeStamp) {
 		this.timeStamp = timeStamp;
+	}
+
+	
+	public Long getStockInPortfolioId() {
+		return StockInPortfolioId;
+	}
+
+	public void setStockInPortfolioId(Long stockInPortfolioId) {
+		StockInPortfolioId = stockInPortfolioId;
 	}
 
 	public String getStockId() {

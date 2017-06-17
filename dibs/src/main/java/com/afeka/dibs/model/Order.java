@@ -25,12 +25,11 @@ public class Order {
 	
 	private String paymentMethod;
 	private Integer amount;
+	private Integer amountCommited;
 	private Double maxPrice;
 	private Double minPrice;
-	
 	@Enumerated(EnumType.STRING)
 	private OrderStatus status;
-	
 	private Date expierdDate;
 	
 	
@@ -40,7 +39,7 @@ public class Order {
 	}
 
 	public Order(Long id, Long portfolioId, String stockId, OrderType type, String paymentMethod, Integer amount,
-			Double maxPrice, Double minPrice, OrderStatus status, Date expierdDate) {
+			Double maxPrice, Double minPrice, Date expierdDate, OrderType status) {
 		super();
 		this.id = id;
 		this.portfolioId = portfolioId;
@@ -50,7 +49,8 @@ public class Order {
 		this.amount = amount;
 		this.maxPrice = maxPrice;
 		this.minPrice = minPrice;
-		this.status = status;
+		this.amountCommited = 0;
+		this.status = OrderStatus.PERFORMED;
 		this.expierdDate = expierdDate;
 	}
 	
@@ -100,6 +100,15 @@ public class Order {
 
 	public void setAmount(Integer amount) {
 		this.amount = amount;
+	}
+	
+
+	public Integer getAmountCommited() {
+		return amountCommited;
+	}
+
+	public void setAmountCommited(Integer amountCommited) {
+		this.amountCommited = amountCommited;
 	}
 
 	public Double getMaxPrice() {

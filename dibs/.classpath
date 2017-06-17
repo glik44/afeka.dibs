@@ -1,32 +1,101 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<classpath>
-	<classpathentry kind="src" output="target/classes" path="src/main/java">
-		<attributes>
-			<attribute name="optional" value="true"/>
-			<attribute name="maven.pomderived" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry excluding="**" kind="src" output="target/classes" path="src/main/resources">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="src" output="target/test-classes" path="src/test/java">
-		<attributes>
-			<attribute name="optional" value="true"/>
-			<attribute name="maven.pomderived" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry exported="true" kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/StockExchangelibs"/>
-	<classpathentry kind="output" path="target/classes"/>
-</classpath>
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v1.5.3.RELEASE)
+
+2017-06-17 17:02:29.717  INFO 7084 --- [           main] client.Main                              : Starting Main on User-PC with PID 7084 (C:\Users\User\git\afeka.dibs\dibs\target\classes started by User in C:\Users\User\git\afeka.dibs\dibs)
+2017-06-17 17:02:29.723  INFO 7084 --- [           main] client.Main                              : No active profile set, falling back to default profiles: default
+2017-06-17 17:02:29.858  INFO 7084 --- [           main] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@79ca92b9: startup date [Sat Jun 17 17:02:29 IDT 2017]; root of context hierarchy
+2017-06-17 17:02:31.942  INFO 7084 --- [           main] o.s.i.config.IntegrationRegistrar        : No bean named 'integrationHeaderChannelRegistry' has been explicitly defined. Therefore, a default DefaultHeaderChannelRegistry will be created.
+2017-06-17 17:02:32.550  INFO 7084 --- [           main] faultConfiguringBeanFactoryPostProcessor : No bean named 'errorChannel' has been explicitly defined. Therefore, a default PublishSubscribeChannel will be created.
+2017-06-17 17:02:32.563  INFO 7084 --- [           main] faultConfiguringBeanFactoryPostProcessor : No bean named 'taskScheduler' has been explicitly defined. Therefore, a default ThreadPoolTaskScheduler will be created.
+2017-06-17 17:02:33.078  INFO 7084 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$c1b43266] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-06-17 17:02:33.163  INFO 7084 --- [           main] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2017-06-17 17:02:33.279  INFO 7084 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$1d1c6d67] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-06-17 17:02:33.456  INFO 7084 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'integrationGlobalProperties' of type [org.springframework.beans.factory.config.PropertiesFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-06-17 17:02:33.465  INFO 7084 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'integrationGlobalProperties' of type [java.util.Properties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-06-17 17:02:34.516  INFO 7084 --- [           main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 8080 (http)
+2017-06-17 17:02:34.550  INFO 7084 --- [           main] o.apache.catalina.core.StandardService   : Starting service Tomcat
+2017-06-17 17:02:34.553  INFO 7084 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.14
+2017-06-17 17:02:34.945  INFO 7084 --- [ost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2017-06-17 17:02:34.946  INFO 7084 --- [ost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 5099 ms
+2017-06-17 17:02:35.417  INFO 7084 --- [ost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2017-06-17 17:02:35.421  INFO 7084 --- [ost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'messageDispatcherServlet' to [/services/*]
+2017-06-17 17:02:35.428  INFO 7084 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2017-06-17 17:02:35.430  INFO 7084 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2017-06-17 17:02:35.431  INFO 7084 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2017-06-17 17:02:35.431  INFO 7084 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+Sat Jun 17 17:02:36 IDT 2017 WARN: Establishing SSL connection without server's identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn't set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to 'false'. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
+Sat Jun 17 17:02:36 IDT 2017 WARN: Establishing SSL connection without server's identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn't set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to 'false'. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
+Sat Jun 17 17:02:36 IDT 2017 WARN: Establishing SSL connection without server's identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn't set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to 'false'. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
+Sat Jun 17 17:02:36 IDT 2017 WARN: Establishing SSL connection without server's identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn't set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to 'false'. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
+Sat Jun 17 17:02:36 IDT 2017 WARN: Establishing SSL connection without server's identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn't set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to 'false'. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
+Sat Jun 17 17:02:36 IDT 2017 WARN: Establishing SSL connection without server's identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn't set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to 'false'. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
+Sat Jun 17 17:02:36 IDT 2017 WARN: Establishing SSL connection without server's identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn't set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to 'false'. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
+Sat Jun 17 17:02:36 IDT 2017 WARN: Establishing SSL connection without server's identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn't set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to 'false'. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
+Sat Jun 17 17:02:36 IDT 2017 WARN: Establishing SSL connection without server's identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn't set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to 'false'. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
+Sat Jun 17 17:02:36 IDT 2017 WARN: Establishing SSL connection without server's identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn't set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to 'false'. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
+2017-06-17 17:02:36.860  INFO 7084 --- [           main] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2017-06-17 17:02:36.909  INFO 7084 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2017-06-17 17:02:37.139  INFO 7084 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.0.12.Final}
+2017-06-17 17:02:37.142  INFO 7084 --- [           main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2017-06-17 17:02:37.147  INFO 7084 --- [           main] org.hibernate.cfg.Environment            : HHH000021: Bytecode provider name : javassist
+2017-06-17 17:02:37.574  INFO 7084 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2017-06-17 17:02:37.875  INFO 7084 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2017-06-17 17:02:38.333  INFO 7084 --- [           main] org.hibernate.tool.hbm2ddl.SchemaExport  : HHH000227: Running hbm2ddl schema export
+2017-06-17 17:02:38.350  INFO 7084 --- [           main] org.hibernate.tool.hbm2ddl.SchemaExport  : HHH000230: Schema export complete
+2017-06-17 17:02:38.448  INFO 7084 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2017-06-17 17:02:39.197  INFO 7084 --- [           main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@79ca92b9: startup date [Sat Jun 17 17:02:29 IDT 2017]; root of context hierarchy
+2017-06-17 17:02:39.378  INFO 7084 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2017-06-17 17:02:39.382  INFO 7084 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-06-17 17:02:39.486  INFO 7084 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-06-17 17:02:39.488  INFO 7084 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-06-17 17:02:39.643  INFO 7084 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-06-17 17:02:40.125  INFO 7084 --- [           main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService  'taskScheduler'
+2017-06-17 17:02:41.357  INFO 7084 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2017-06-17 17:02:41.378  INFO 7084 --- [           main] o.s.c.support.DefaultLifecycleProcessor  : Starting beans in phase 0
+2017-06-17 17:02:41.379  INFO 7084 --- [           main] o.s.i.endpoint.EventDrivenConsumer       : Adding {logging-channel-adapter:_org.springframework.integration.errorLogger} as a subscriber to the 'errorChannel' channel
+2017-06-17 17:02:41.379  INFO 7084 --- [           main] o.s.i.channel.PublishSubscribeChannel    : Channel 'application.errorChannel' has 1 subscriber(s).
+2017-06-17 17:02:41.380  INFO 7084 --- [           main] o.s.i.endpoint.EventDrivenConsumer       : started _org.springframework.integration.errorLogger
+2017-06-17 17:02:41.381  INFO 7084 --- [           main] o.s.c.support.DefaultLifecycleProcessor  : Starting beans in phase 2147483647
+2017-06-17 17:02:41.489  INFO 7084 --- [           main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8080 (http)
+2017-06-17 17:02:41.501  INFO 7084 --- [           main] client.Main                              : Started Main in 12.516 seconds (JVM running for 13.464)
+StockExchangeTransaction [id=1, commandId=6, actualAmount=5, actualPrice=15.0, timestamp=Sat Jun 17 17:02:42 IDT 2017]
+StockExchangeTransaction [id=2, commandId=5, actualAmount=5, actualPrice=15.0, timestamp=Sat Jun 17 17:02:42 IDT 2017]
+StockExchangeTransaction [id=3, commandId=5, actualAmount=5, actualPrice=24.0, timestamp=Sat Jun 17 17:02:42 IDT 2017]
+StockExchangeTransaction [id=4, commandId=7, actualAmount=5, actualPrice=24.0, timestamp=Sat Jun 17 17:02:42 IDT 2017]
+	StockExchangeTransaction [id=2, commandId=5, actualAmount=5, actualPrice=15.0, timestamp=Sat Jun 17 17:02:42 IDT 2017]
+	StockExchangeTransaction [id=3, commandId=5, actualAmount=5, actualPrice=24.0, timestamp=Sat Jun 17 17:02:42 IDT 2017]
+tickers:
+Stock [id=AMZN, name=Amazon.com, Inc., quote=750.0]
+Stock [id=FB, name=Facebook, Inc., quote=115.0]
+Stock [id=GOOG, name=Alphabet Inc., quote=24.0]
+Stock [id=IBM, name=International Business Machines Corporation, quote=160.0]
+Stock [id=ORCL, name=Oracle Corporation, quote=38.0]
+GOOG last transactions:
+	StockExchangeTransaction [id=3, commandId=5, actualAmount=5, actualPrice=24.0, timestamp=Sat Jun 17 17:02:42 IDT 2017]
+	StockExchangeTransaction [id=4, commandId=7, actualAmount=5, actualPrice=24.0, timestamp=Sat Jun 17 17:02:42 IDT 2017]
+GOOG last commands:
+	StockExchangeCommand [type=BID, invokerId=client1, stockId=GOOG, minPrice=24.0, maxPrice=24.0, amount=0, originalAmout=5, status=PERFORMED]
+	StockExchangeCommand [type=BID, invokerId=client1, stockId=GOOG, minPrice=15.0, maxPrice=15.0, amount=0, originalAmout=5, status=PERFORMED]
+	StockExchangeCommand [type=ASK, invokerId=client1, stockId=GOOG, minPrice=15.0, maxPrice=15.0, amount=0, originalAmout=10, status=PERFORMED]
+	StockExchangeCommand [type=BID, invokerId=client1, stockId=GOOG, minPrice=10.0, maxPrice=50.0, amount=5, originalAmout=5, status=COMMITTED]
+	StockExchangeCommand [type=BID, invokerId=client1, stockId=GOOG, minPrice=10.0, maxPrice=50.0, amount=5, originalAmout=5, status=COMMITTED]
+	StockExchangeCommand [type=BID, invokerId=client1, stockId=GOOG, minPrice=10.0, maxPrice=50.0, amount=5, originalAmout=5, status=COMMITTED]
+2017-06-17 17:02:48.039  INFO 7084 --- [           main] ationConfigEmbeddedWebApplicationContext : Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@79ca92b9: startup date [Sat Jun 17 17:02:29 IDT 2017]; root of context hierarchy
+2017-06-17 17:02:48.044  INFO 7084 --- [           main] o.s.c.support.DefaultLifecycleProcessor  : Stopping beans in phase 2147483647
+2017-06-17 17:02:48.054  INFO 7084 --- [           main] o.s.c.support.DefaultLifecycleProcessor  : Stopping beans in phase 0
+2017-06-17 17:02:48.055  INFO 7084 --- [           main] o.s.i.endpoint.EventDrivenConsumer       : Removing {logging-channel-adapter:_org.springframework.integration.errorLogger} as a subscriber to the 'errorChannel' channel
+2017-06-17 17:02:48.055  INFO 7084 --- [           main] o.s.i.channel.PublishSubscribeChannel    : Channel 'application.errorChannel' has 0 subscriber(s).
+2017-06-17 17:02:48.056  INFO 7084 --- [           main] o.s.i.endpoint.EventDrivenConsumer       : stopped _org.springframework.integration.errorLogger
+2017-06-17 17:02:48.116  INFO 7084 --- [           main] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService 'taskScheduler'
+2017-06-17 17:02:48.117  INFO 7084 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2017-06-17 17:02:48.118  INFO 7084 --- [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2017-06-17 17:02:48.120  INFO 7084 --- [           main] org.hibernate.tool.hbm2ddl.SchemaExport  : HHH000227: Running hbm2ddl schema export
+2017-06-17 17:02:48.125  INFO 7084 --- [           main] org.hibernate.tool.hbm2ddl.SchemaExport  : HHH000230: Schema export complete

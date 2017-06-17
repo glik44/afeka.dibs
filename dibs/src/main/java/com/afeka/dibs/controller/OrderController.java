@@ -31,7 +31,7 @@ import com.afeka.dibs.service.StockService;
 @RestController
 @RequestMapping(path="/order")
 public class OrderController {
-	private static final String clientId = "client1";
+	private static final String clientId = "client2";
 	
 	@Autowired
 	private OrderService orderService;
@@ -53,6 +53,8 @@ public class OrderController {
 		
 		if(order.getPortfolioId() == null)
 			return "invalid portfolio number!";
+		if (order.getPaymentMethod()==null)
+			return "invalid payment mathod!";
 		if(order.getType() == OrderType.ASK){
 			command = new StockExchangeCommand(StockCommandType.ASK, clientId,
 																	order.getStockId(), order.getMinPrice(),
@@ -73,23 +75,40 @@ public class OrderController {
 		return "Something worng!";
 	}
 	
-	@Scheduled(fixedDelay=60000)
-	public void UpdateOrders (){
-		List<Order> pendingOrder= orderService.getAllWaitingOrders();
-		
-		for (Order order : pendingOrder) {
-			int amount=0;
-			Portfolio p = portfolioService.getById(order.getPortfolioId());
-			List<StockExchangeTransaction> t = this.client.getTransactionsForCommand(order.getId());
-			for (StockExchangeTransaction st : t) {
-				amount += st.getActualAmount();
-				p.getStocks().add(new StockInPortfolio(order.getStockId(), st.getActualAmount(), 
-															st.getActualPrice(),st.getTimestamp()));
-			}
-			portfolioService.add(p);
-			//TODO
-		}
-	}
+//	@Scheduled(fixedDelay=60000)
+//	public void UpdateOrders (){
+//		List<Order> pendingOrder= orderService.getAllWaitingOrders();
+//		
+//		for (Order order : pendingOrder) {
+//			Portfolio p = portfolioService.getById(order.getPortfolioId());
+//			List<StockExchangeTransaction> t = this.client.getTransactionsForCommand(order.getId());
+//			//ASK - sell
+//			if (order.getType().name()=="ASK"){
+//				for (StockExchangeTransaction st : t) {
+//					if (p.checkIfStockInPortfolioIdExict(st.getId())){ //if the trasactionID is not exict
+//						p.getStocks().remove(p.getStockInPortfolioByStockInPortfolioId(st.getId()));
+//						order.setAmountCommited(order.getAmountCommited() - st.getActualAmount());
+//						if (order.getAmountCommited()==0)
+//							order.setStatus(OrderStatus.COMMITTED);
+//						}
+//				}
+//			}
+//			
+//			// BID - to buy
+//			if (order.getType().name()=="BID"){
+//				for (StockExchangeTransaction st : t) {
+//					if (!p.checkIfStockInPortfolioIdExict(st.getId())){ //if the trasactionID is not exict
+//						p.getStocks().add(new StockInPortfolio(order.getStockId(),st.getId(), st.getActualAmount(), 
+//																st.getActualPrice(),st.getTimestamp()));
+//						order.setAmountCommited(order.getAmountCommited() + st.getActualAmount());
+//						if (order.getAmountCommited()==order.getAmount())
+//							order.setStatus(OrderStatus.COMMITTED);
+//						}
+//				}
+//			}
+//			portfolioService.add(p);
+//		}
+//	}
 	
 	@RequestMapping(path="/showorder/{portfolioId}", method=RequestMethod.GET)
 	public List<Order> showOrdersByPortfolio (@PathVariable("portfolioId") Long portfolioId){

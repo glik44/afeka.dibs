@@ -56,5 +56,21 @@ public class Portfolio {
 	public void setStocks(List<StockInPortfolio> stocks) {
 		this.stocks = stocks;
 	}
+	
+	// this methods needed to check if there is already a trassactionID. 
+	public boolean checkIfStockInPortfolioIdExict(Long stockInPortfolioId){ 
+		for (StockInPortfolio stockInPortfolio : stocks)
+			if (stockInPortfolio.getStockInPortfolioId()==stockInPortfolioId)
+				return true;
+		return false;
+	}
+	
+	public StockInPortfolio getStockInPortfolioByStockInPortfolioId(Long StockInPortfolioId){
+		for (StockInPortfolio stockInPortfolio : stocks){
+			if (stockInPortfolio.getStockInPortfolioId() == StockInPortfolioId)
+				return stockInPortfolio;
+		}
+		return null;	
+	}
 
 }
