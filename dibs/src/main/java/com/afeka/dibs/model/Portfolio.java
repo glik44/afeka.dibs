@@ -18,6 +18,8 @@ public class Portfolio {
 	@GeneratedValue
 	private Long id;
 	private Long accountId;
+	private Double value;
+	private Double balanc;
 	
 	@Embedded
 	@Autowired
@@ -31,6 +33,22 @@ public class Portfolio {
 	public Portfolio(Long accountId) {
 		super();
 		this.accountId = accountId;
+	}
+
+	public Double getValue() {
+		return value;
+	}
+
+	public void setValue(Double value) {
+		this.value = value;
+	}
+
+	public Double getBalanc() {
+		return balanc;
+	}
+
+	public void setBalanc(Double balanc) {
+		this.balanc = balanc;
 	}
 
 	public Long getId() {
