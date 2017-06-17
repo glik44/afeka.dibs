@@ -30,6 +30,6 @@ public class AccountService implements Iservice <Account>{
 
 	@Transactional(readOnly=true)
 	public Account getById(Long id) {
-		return accountDao.getOne(id);
+		return accountDao.findOne(id);
 	}
 }

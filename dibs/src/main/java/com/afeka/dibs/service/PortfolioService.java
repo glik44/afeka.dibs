@@ -30,7 +30,7 @@ public class PortfolioService implements Iservice<Portfolio>{
 	
 	@Transactional(readOnly=true)
 	public Portfolio getById(Long id) {
-		return portfolioDao.getOne(id);
+		return portfolioDao.findOne(id);
 	}
 	
 	@Transactional(readOnly=true)

@@ -6,16 +6,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.afeka.dibs.model.Portfolio;
+import com.afeka.dibs.model.StockInPortfolio;
 import com.afeka.dibs.service.PortfolioService;
+import com.afeka.dibs.service.StockService;
 
 @RestController
 @RequestMapping(path="/portfolio")
 public class PortfolioController {
 	@Autowired
 	private PortfolioService portfolioService;
+	@Autowired
+	private StockService stockService;
 	
 	
 	public PortfolioController(){
@@ -34,8 +39,37 @@ public class PortfolioController {
 		return "Error to open new portfolio";
 	}
 	
-	@RequestMapping(path="/show/{accountId}", method=RequestMethod.GET)
-	public List<Portfolio> showPortfolio(@PathVariable("accountId") Long accountId){
-		return portfolioService.getPortfolioByAccount(accountId);
+	@RequestMapping(path="/show", method=RequestMethod.GET)
+	public List<Portfolio> showPortfolio(@RequestParam("accountId") Long accountId){
+		List<Portfolio> portfolioList = portfolioService.getPortfolioByAccount(accountId);
+		if(portfolioList != null)
+			for (Portfolio portfolio : portfolioList) {
+				portfolio.setValue(calcProtfolioValue(portfolio));
+				portfolio.setBalance(calcProtfolioBalance(portfolio));
+			}
+		
+		return portfolioList;
+	}
+	
+	public Double calcProtfolioValue(Portfolio portfolio){
+		Double value = 0.0;
+		List<StockInPortfolio> stocksList = portfolio.getStocks();
+		if(stocksList != null)
+			for (StockInPortfolio stockInPortfolio : stocksList) {
+				value +=stockService.getById(stockInPortfolio.getStockId()).getQuote() * stockInPortfolio.getAmount();
+			}
+
+		return value;
+	}
+	
+	public Double calcProtfolioBalance(Portfolio protfolio){
+		Double balance = 0.0;
+		List<StockInPortfolio> stocksList = protfolio.getStocks();
+		balance = protfolio.getValue();
+		if(stocksList != null)
+			for (StockInPortfolio stockInPortfolio : stocksList) {
+				balance -= (stockInPortfolio.getPurchaseRate() * stockInPortfolio.getAmount());
+			}
+		return balance;
 	}
 }

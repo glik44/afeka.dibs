@@ -78,16 +78,33 @@ public class OrderController {
 		List<Order> pendingOrder= orderService.getAllWaitingOrders();
 		
 		for (Order order : pendingOrder) {
-			int amount=0;
 			Portfolio p = portfolioService.getById(order.getPortfolioId());
 			List<StockExchangeTransaction> t = this.client.getTransactionsForCommand(order.getId());
-			for (StockExchangeTransaction st : t) {
-				amount += st.getActualAmount();
-				p.getStocks().add(new StockInPortfolio(order.getStockId(), st.getActualAmount(), 
-															st.getActualPrice(),st.getTimestamp()));
+			//ASK - sell
+			if (order.getType().name()=="ASK"){
+				for (StockExchangeTransaction st : t) {
+					if (p.checkIfStockInPortfolioIdExict(st.getId())){ //if the trasactionID is not exict
+						p.getStocks().remove(p.getStockInPortfolioByStockInPortfolioId(st.getId()));
+						order.setAmountCommited(order.getAmountCommited() - st.getActualAmount());
+						if (order.getAmountCommited()==0)
+							order.setStatus(OrderStatus.COMMITTED);
+						}
+				}
+			}
+			
+			// BID - to buy
+			if (order.getType().name()=="BID"){
+				for (StockExchangeTransaction st : t) {
+					if (!p.checkIfStockInPortfolioIdExict(st.getId())){ //if the trasactionID is not exict
+						p.getStocks().add(new StockInPortfolio(order.getStockId(),st.getId(), st.getActualAmount(), 
+																st.getActualPrice(),st.getTimestamp()));
+						order.setAmountCommited(order.getAmountCommited() + st.getActualAmount());
+						if (order.getAmountCommited()==order.getAmount())
+							order.setStatus(OrderStatus.COMMITTED);
+						}
+				}
 			}
 			portfolioService.add(p);
-			//TODO
 		}
 	}
 	

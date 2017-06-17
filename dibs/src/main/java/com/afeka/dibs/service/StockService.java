@@ -30,7 +30,7 @@ public class StockService implements Iservice<Stock>{
 
 	@Transactional(readOnly=true)
 	public Stock getById(String id) {
-		return stockDao.getOne(id);
+		return stockDao.findOne(id);
 	}
 	
 

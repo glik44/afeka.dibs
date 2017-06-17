@@ -14,6 +14,6 @@ public interface OrderDao extends JpaRepository<Order, Long> {
 	@Query("SELECT o FROM Order AS o WHERE o.portfolioId = :portfolioID ORDER BY o.id ASC")
 	public List<Order> getOrdersByPortfolio (@Param("portfolioID") Long portfolioId);
 	
-	@Query("SELECT o FROM Order AS o WHERE o.status = com.afeka.dibs.model.OrderStatus.PERFORMED")
+	@Query("SELECT o FROM Order AS o WHERE o.status LIKE 'PERFORMED' ")
 	public List<Order> getAllWaitingOrders ();
 }

@@ -26,9 +26,9 @@ public class Main {
 		String myId = "client1";
 		client.startListening(myId, (o, event)->System.err.println(event));
 		
-		Long askId = client.sendCommand(new StockExchangeCommand(StockCommandType.ASK, myId, "GOOG", 15.0, 15.0, 10));
-		client.sendCommand(new StockExchangeCommand(StockCommandType.BID, myId, "GOOG", 15.0, 15.0, 5));
-		client.sendCommand(new StockExchangeCommand(StockCommandType.BID, myId, "GOOG", 24.0, 24.0, 5));
+		Long askId = client.sendCommand(new StockExchangeCommand(StockCommandType.BID, myId, "GOOG", 15.0, 15.0, 10));
+		client.sendCommand(new StockExchangeCommand(StockCommandType.ASK, myId, "AMZN", 15.0, 15.0, 5));
+		client.sendCommand(new StockExchangeCommand(StockCommandType.BID, myId, "IBM", 24.0, 24.0, 5));
 		
 		
 		Thread.sleep(5000);

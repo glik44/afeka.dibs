@@ -30,7 +30,7 @@ public class OrderService implements Iservice <Order> {
 
 	@Transactional(readOnly=true)
 	public Order getById(Long id) {
-		return orderDao.getOne(id);
+		return orderDao.findOne(id);
 	}
 	
 	@Transactional(readOnly=true)

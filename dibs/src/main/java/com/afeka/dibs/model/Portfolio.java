@@ -1,14 +1,14 @@
 package com.afeka.dibs.model;
 
-import java.util.List;
+import java.util.ArrayList;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.springframework.beans.factory.annotation.Autowired;
 
 @Entity
 @Table(name="PORTFOLIOS")
@@ -18,10 +18,12 @@ public class Portfolio {
 	@GeneratedValue
 	private Long id;
 	private Long accountId;
+	private Double value;
+	private Double balance;
 	
 	@Embedded
-	@Autowired
-	private List<StockInPortfolio> stocks;
+	@ElementCollection
+	private ArrayList<StockInPortfolio> stocks;
 	
 	
 	public Portfolio() {
@@ -30,7 +32,7 @@ public class Portfolio {
 
 	public Portfolio(Long accountId) {
 		super();
-		this.accountId = accountId;
+		this.accountId = accountId;	
 	}
 
 	public Long getId() {
@@ -49,12 +51,44 @@ public class Portfolio {
 		this.accountId = accountId;
 	}
 
-	public List<StockInPortfolio> getStocks() {
+	public ArrayList<StockInPortfolio> getStocks() {
 		return stocks;
 	}
 
-	public void setStocks(List<StockInPortfolio> stocks) {
+	public void setStocks(ArrayList<StockInPortfolio> stocks) {
 		this.stocks = stocks;
+	}
+	
+	// this methods needed to check if there is already a trassactionID. 
+	public boolean checkIfStockInPortfolioIdExict(Long stockInPortfolioId){ 
+		for (StockInPortfolio stockInPortfolio : stocks)
+			if (stockInPortfolio.getStockInPortfolioId()==stockInPortfolioId)
+				return true;
+		return false;
+	}
+	
+	public StockInPortfolio getStockInPortfolioByStockInPortfolioId(Long StockInPortfolioId){
+		for (StockInPortfolio stockInPortfolio : stocks){
+			if (stockInPortfolio.getStockInPortfolioId() == StockInPortfolioId)
+				return stockInPortfolio;
+		}
+		return null;	
+	}
+
+	public Double getBalance() {
+		return balance;
+	}
+
+	public void setBalance(Double balance) {
+		this.balance = balance;
+	}
+
+	public Double getValue() {
+		return value;
+	}
+
+	public void setValue(Double value) {
+		this.value = value;
 	}
 
 }
