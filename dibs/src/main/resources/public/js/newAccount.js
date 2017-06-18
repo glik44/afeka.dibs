@@ -8,13 +8,31 @@ $(document).ready(function() {
 });
 
 
+function newAccountDetails() {
+	// TODO: input validation
+	return {
+		'id': $('#reg-id').val(),
+		'name': $('#reg-name').val(),
+		'email': $('#reg-email').val(),
+		'birthday': $('#reg-birthdate').val(),
+		'password': $('#reg-password').val()
+	};
+}
+
 function newAccount() {
+	console.log('newAccount()  = ', newAccountDetails());	
     $.ajax({
         url: "http://localhost:8080/account/new",
         type: "POST",
-        datatype: "json",
-        data: {id: $('#Id').val(), name: $('#name').val(), email: $('#email').val(), password: $('#password').val(), birthdate: $('#birthdate').val()}
-    }).then(function(data) {
-       $('.new-account-result').append(data);
+        contentType: "application/json",
+        dataType: "json",
+        data: JSON.stringify(newAccountDetails()),
+        success: function(data, status, x) {
+        	console.log('success ', data);
+        	$('#reg-result').text(data.status);
+        	$('#reg-form').addClass('hidden');
+            
+         },
+        error: function(err, status, err2) { console.log('err: ', err, status, err2); }
     });
-});
+};

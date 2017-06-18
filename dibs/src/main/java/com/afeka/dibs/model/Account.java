@@ -20,6 +20,10 @@ public class Account {
 	private String password;
 	private String email;
 
+	@Override
+	public String toString() {
+		return this.id + " " + this.name;
+	}
 	
 	public Account() {
 		super();

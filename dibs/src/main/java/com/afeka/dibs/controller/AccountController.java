@@ -29,9 +29,11 @@ public class AccountController {
 	@RequestMapping(path="/new",
 			method=RequestMethod.POST)
 	public String addNewAccount (@RequestBody Account account){
+		
+		System.out.println(account.toString());
 		if(account != null){
 			if ((accountService.add(account)).size() > 0)
-				return "The account created successfuly";
+				return "{\"status\": \"The account created successfuly\"}";
 		}
 		return "Error to create account";
 	}

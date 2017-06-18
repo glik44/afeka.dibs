@@ -93,36 +93,36 @@
             </div>
             <div class="row">
                 <div class="col-lg-12">
-                    <form name="הירשם" id="rgister" novalidate>
+                    <form id="reg-form" novalidate>
                         <div class="row">
 								<div class="form-group">
-                                    <input type="Id" class="form-control" placeholder="מספר הזהות שלך*" id="Id" required data-validation-required-message="אנא הכנס את מספר הזהות שלך">
+                                    <input type="Id" class="form-control" placeholder="מספר הזהות שלך*" id="reg-id" required data-validation-required-message="אנא הכנס את מספר הזהות שלך">
                                     <p class="help-block text-danger"></p>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="שמך *" id="name" required data-validation-required-message="אנא הכנס את שמך המלא.">
+                                    <input type="text" class="form-control" placeholder="שמך *" id="reg-name" required data-validation-required-message="אנא הכנס את שמך המלא.">
                                     <p class="help-block text-danger"></p>
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control" placeholder="אימייל *" id="email" required data-validation-required-message="אנא הכנס כתובת אימייל.">
+                                    <input type="email" class="form-control" placeholder="אימייל *" id="reg-email" required data-validation-required-message="אנא הכנס כתובת אימייל.">
                                     <p class="help-block text-danger"></p>
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control" placeholder="סיסמא *" id="password" required data-validation-required-message="אנא הכנס סיסמא.">
+                                    <input type="password" class="form-control" placeholder="סיסמא *" id="reg-password" required data-validation-required-message="אנא הכנס סיסמא.">
                                     <p class="help-block text-danger"></p>
                                 </div>
 								 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="2000-01-01" id="birthdate" required data-validation-required-message="אנא הכנס תאריך לידה">
+                                    <input type="text" class="form-control" placeholder="2000-01-01" id="reg-birthdate" required data-validation-required-message="אנא הכנס תאריך לידה">
                                     <p class="help-block text-danger"></p>
                                 </div>
-                            <div class="clearfix"></div>
                             <div class="col-lg-12 text-center">
-                                <div id="success"></div>
-                                <button type="submit" class="btn btn-xl">הירשם</button>
+                                <div id="reg-submit" onclick="newAccount()">הירשם</div>
+                                
                                 <p class="new-account-result"> </p>
                             </div>
                         </div>
                     </form>
+                    <div id="reg-result"></div>
                 </div>
             </div>
         </div>
@@ -333,7 +333,7 @@
     <script src="js/agency.min.js"></script>
     
     <!-- Dibs JavaScript -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> <!-- TODO: need??  -->
     <script src="js/newAccount.js"></script>
 
 </body>
