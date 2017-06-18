@@ -1,13 +1,16 @@
 package com.afeka.dibs.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.ElementCollection;
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.JoinTable;
+import javax.persistence.JoinColumn;
 
 
 @Entity
@@ -20,11 +23,13 @@ public class Portfolio {
 	private Long accountId;
 	private Double value;
 	private Double balance;
+	private Double profit;
 	
-	@Embedded
-	@ElementCollection
-	private ArrayList<StockInPortfolio> stocks;
-	
+	@ElementCollection(fetch=FetchType.EAGER)
+	@JoinTable(name="StockInPortfolio",
+		joinColumns= @JoinColumn(name="portfolio_id"))
+	private List<StockInPortfolio> stocks = new ArrayList<StockInPortfolio>();
+
 	
 	public Portfolio() {
 		super();
@@ -33,6 +38,9 @@ public class Portfolio {
 	public Portfolio(Long accountId) {
 		super();
 		this.accountId = accountId;	
+		this.balance = 0.0;
+		this. value = 0.0;
+		this.profit = 0.0;
 	}
 
 	public Long getId() {
@@ -51,11 +59,11 @@ public class Portfolio {
 		this.accountId = accountId;
 	}
 
-	public ArrayList<StockInPortfolio> getStocks() {
+	public List<StockInPortfolio> getStocks() {
 		return stocks;
 	}
 
-	public void setStocks(ArrayList<StockInPortfolio> stocks) {
+	public void setStocks(List<StockInPortfolio> stocks) {
 		this.stocks = stocks;
 	}
 	
@@ -89,6 +97,24 @@ public class Portfolio {
 
 	public void setValue(Double value) {
 		this.value = value;
+	}
+	
+	public int getStockAmountAvailable(String stockId){
+		int amount=0;
+		for(StockInPortfolio stockInPortfolio : stocks){
+			if(stockInPortfolio.getStockId().equals(stockId)){
+				amount += stockInPortfolio.getAmount();
+			}
+		}
+		return amount;
+	}
+
+	public Double getProfit() {
+		return profit;
+	}
+
+	public void setProfit(Double profit) {
+		this.profit = profit;
 	}
 
 }

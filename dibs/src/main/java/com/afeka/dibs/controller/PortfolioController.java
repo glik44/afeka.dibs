@@ -45,9 +45,9 @@ public class PortfolioController {
 		if(portfolioList != null)
 			for (Portfolio portfolio : portfolioList) {
 				portfolio.setValue(calcProtfolioValue(portfolio));
-				portfolio.setBalance(calcProtfolioBalance(portfolio));
+				portfolio.setProfit(calcProtfolioProfit(portfolio));
+				portfolioService.add(portfolio);
 			}
-		
 		return portfolioList;
 	}
 	
@@ -62,14 +62,10 @@ public class PortfolioController {
 		return value;
 	}
 	
-	public Double calcProtfolioBalance(Portfolio protfolio){
-		Double balance = 0.0;
-		List<StockInPortfolio> stocksList = protfolio.getStocks();
-		balance = protfolio.getValue();
-		if(stocksList != null)
-			for (StockInPortfolio stockInPortfolio : stocksList) {
-				balance -= (stockInPortfolio.getPurchaseRate() * stockInPortfolio.getAmount());
-			}
-		return balance;
+	public Double calcProtfolioProfit(Portfolio portfolio){
+		Double profit;
+		profit = (portfolio.getValue() / portfolio.getBalance()) * 100 ;
+		
+		return profit;
 	}
 }
