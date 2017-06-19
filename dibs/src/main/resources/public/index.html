@@ -93,7 +93,7 @@
             </div>
             <div class="row">
                 <div class="col-lg-12">
-                    <form id="reg-form" >
+                    <form id="reg-form" novalidate>
                         <div class="row">
 								<div class="form-group">
                                     <input type="text" class="form-control" placeholder="מספר הזהות שלך*" id="reg-id" required data-validation-required-message="אנא הכנס את מספר הזהות שלך">
@@ -137,7 +137,7 @@
                 </div>
             </div>
             <div class="row">
-            	<form id="portfolio-form" >
+            	<form id="portfolio-form" novalidate>
 					<div class="form-group">
                            <input type="text" class="form-control" placeholder="הזן מספר זהות של בעל החשבון*" id="port-accountId" required data-validation-required-message="אנא הכנס את מספר הזהות שלך">
                            <p class="help-block text-danger"></p>
@@ -232,7 +232,9 @@
                 <div class="col-lg-12 text-center">
                     <h2 class="section-heading">ערך מניות עדכני</h2>
                     <h3 class="section-subheading text-muted">להלן כלל ערכי המניות העדכני</h3>
-                    <table id="sto-table"></table>
+                    <center>
+                    <table border=2 id="sto-table"></table>
+                    </center>
                 	<input type="button" value="רענן" type="submit" id="sto-submit" onclick="showStocks()" class="btn btn-xl">
                 </div>
             </div>
@@ -328,7 +330,7 @@
 
     <!-- Contact Form JavaScript -->
     <script src="js/jqBootstrapValidation.js"></script>
-    <script src="js/contact_me.js"></script>
+
 
     <!-- Theme JavaScript -->
     <script src="js/agency.min.js"></script>
