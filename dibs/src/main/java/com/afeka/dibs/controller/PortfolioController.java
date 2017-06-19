@@ -3,6 +3,7 @@ package com.afeka.dibs.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -39,7 +40,7 @@ public class PortfolioController {
 		return "Error to open new portfolio";
 	}
 	
-	@RequestMapping(path="/show", method=RequestMethod.GET)
+	@RequestMapping(path="/show", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
 	public List<Portfolio> showPortfolio(@RequestParam("accountId") Long accountId){
 		List<Portfolio> portfolioList = portfolioService.getPortfolioByAccount(accountId);
 		if(portfolioList != null)
@@ -64,7 +65,7 @@ public class PortfolioController {
 	
 	public Double calcProtfolioProfit(Portfolio portfolio){
 		Double profit;
-		profit = (portfolio.getValue() / portfolio.getBalance()) * 100 ;
+		profit = (portfolio.getValue() - portfolio.getBalance()) / portfolio.getBalance() * 100 ;
 		
 		return profit;
 	}

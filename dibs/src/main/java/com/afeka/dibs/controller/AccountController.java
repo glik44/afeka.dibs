@@ -3,6 +3,7 @@ package com.afeka.dibs.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -33,12 +34,12 @@ public class AccountController {
 		System.out.println(account.toString());
 		if(account != null){
 			if ((accountService.add(account)).size() > 0)
-				return "{\"status\": \"The account created successfuly\"}";
+				return "The account created successfuly";
 		}
 		return "Error to create account";
 	}
 	
-	@RequestMapping(path="/showall", method=RequestMethod.GET)
+	@RequestMapping(path="/showall", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
 	public List<Account> showAllAccount (){
 		return accountService.getAll();
 	}

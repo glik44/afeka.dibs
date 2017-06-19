@@ -75,7 +75,7 @@
     <header>
         <div class="container">
             <div class="intro-text">
-                <div class="intro-heading">מערכת </div>
+                <div class="intro-heading">Digital Investment Bank System </div>
                 <div class="intro-heading"></div>
                 <a href="#signup" class="page-scroll btn btn-xl">תתחיל מכאן</a>
             </div>
@@ -93,10 +93,10 @@
             </div>
             <div class="row">
                 <div class="col-lg-12">
-                    <form id="reg-form" novalidate>
+                    <form id="reg-form" >
                         <div class="row">
 								<div class="form-group">
-                                    <input type="Id" class="form-control" placeholder="מספר הזהות שלך*" id="reg-id" required data-validation-required-message="אנא הכנס את מספר הזהות שלך">
+                                    <input type="text" class="form-control" placeholder="מספר הזהות שלך*" id="reg-id" required data-validation-required-message="אנא הכנס את מספר הזהות שלך">
                                     <p class="help-block text-danger"></p>
                                 </div>
                                 <div class="form-group">
@@ -112,17 +112,16 @@
                                     <p class="help-block text-danger"></p>
                                 </div>
 								 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="2000-01-01" id="reg-birthdate" required data-validation-required-message="אנא הכנס תאריך לידה">
+                                    <input type="date" class="form-control" placeholder="2000-01-01" id="reg-birthdate" required data-validation-required-message="אנא הכנס תאריך לידה">
                                     <p class="help-block text-danger"></p>
                                 </div>
                             <div class="col-lg-12 text-center">
-                                <div id="reg-submit" onclick="newAccount()">הירשם</div>
-                                
-                                <p class="new-account-result"> </p>
+                            	<input type="button" type="submit" value="הירשם" id="reg-submit" onclick="newAccount()" class="btn btn-xl">
                             </div>
                         </div>
                     </form>
-                    <div id="reg-result"></div>
+                    <div id="reg-account-result"></div>
+                    <div id="reg-portfolio-result"></div>
                 </div>
             </div>
         </div>
@@ -138,16 +137,18 @@
                 </div>
             </div>
             <div class="row">
+            	<form id="portfolio-form" >
 					<div class="form-group">
-                           <input type="id" class="form-control" placeholder="הזן מספר זהות של בעל החשבון*" id="accountId" required data-validation-required-message="אנא הכנס את מספר הזהות שלך">
+                           <input type="text" class="form-control" placeholder="הזן מספר זהות של בעל החשבון*" id="port-accountId" required data-validation-required-message="אנא הכנס את מספר הזהות שלך">
                            <p class="help-block text-danger"></p>
                     </div>
 					 <div class="clearfix"></div>
-                            <div class="col-lg-12 text-center">
-                                <div id="success"></div>
-                                <button type="submit" class="btn btn-xl">בצע</button>
-                            </div>
-        
+                     <div class="col-lg-12 text-center">
+                          <div id="success"></div>
+                          <input type="button" type="submit" value="בצע" id="portolio-submit" onclick="showPortfolio()" class="btn btn-xl">
+                    </div>
+                </form>
+                <div id="portfolio-result"></div>
             </div>
         </div>
     </section>
@@ -225,13 +226,15 @@
         </div>
     </section>
 
-    <!-- Team Section -->
+    <!-- Stock Section -->
     <section id="stock" class="bg-light-gray">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2 class="section-heading">ערך מניות עדכני</h2>
                     <h3 class="section-subheading text-muted">להלן כלל ערכי המניות העדכני</h3>
+                    <table id="sto-table"></table>
+                	<input type="button" value="רענן" type="submit" id="sto-submit" onclick="showStocks()" class="btn btn-xl">
                 </div>
             </div>
         </div>
@@ -267,7 +270,6 @@
 
     <!-- Contact Section -->
    
-
     <footer>
         <div class="container">
             <div class="row">
@@ -335,6 +337,8 @@
     <!-- Dibs JavaScript -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> <!-- TODO: need??  -->
     <script src="js/newAccount.js"></script>
+    <script src="js/portfolio.js"></script>
+    <script src="js/showStocks.js"></script>
 
 </body>
 
